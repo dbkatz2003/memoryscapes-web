@@ -1,0 +1,318 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-memory-blue: #0066FF;
+  --color-memory-magenta: #FF00FF;
+  --color-memory-purple: #9999FF;
+  --color-memory-lavender: #B8B8FF;
+  --color-memory-pink: #E6007E;
+  --color-dark-bg: #0a0a0a;
+  --color-dark-surface: #1a1a1a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-dark-bg);
+  color: #ffffff;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Dynamic Background */
+.dynamic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Animated gradient mesh */
+.gradient-mesh {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  left: -100%;
+  background: 
+    linear-gradient(90deg, 
+      rgba(10, 10, 10, 1) 0%,
+      rgba(0, 102, 255, 0.3) 25%,
+      rgba(153, 153, 255, 0.3) 50%,
+      rgba(184, 184, 255, 0.25) 65%,
+      rgba(255, 0, 255, 0.25) 80%,
+      rgba(10, 10, 10, 1) 100%
+    );
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Floating orbs */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.3;
+  animation: float 15s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-memory-blue);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-memory-purple);
+  top: 60%;
+  right: 10%;
+  animation-delay: 5s;
+}
+
+.orb-3 {
+  width: 250px;
+  height: 250px;
+  background: var(--color-memory-lavender);
+  bottom: 20%;
+  left: 30%;
+  animation-delay: 10s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Launch date badge hover effect */
+.launch-date-badge {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.launch-date-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.4) 0%, rgba(153, 153, 255, 0.4) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.launch-date-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 102, 255, 0.6), 0 0 60px rgba(0, 102, 255, 0.4), 0 0 100px rgba(0, 102, 255, 0.2);
+}
+
+.launch-date-badge:hover::before {
+  opacity: 1;
+}
+
+.nav-link {
+  color: var(--color-memory-blue);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 102, 255, 0.1);
+}
+
+.nav-link.active {
+  background-color: var(--color-memory-blue);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--color-memory-blue);
+  border: 2px solid var(--color-memory-blue);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: #EBF5FF;
+}
+
+.section-card {
+  border-radius: 2rem;
+  padding: 3rem;
+  color: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.section-card:hover::before {
+  left: 100%;
+}
+
+.section-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 80px rgba(0, 102, 255, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.section-reveal {
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-reveal.visible {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+.section-reveal:not(.visible) {
+  transform: translateY(60px);
+}
+
+/* Horizontal Scroll Section */
+.horizontal-scroll-wrapper {
+  height: 300vh;
+  position: relative;
+}
+
+.horizontal-scroll-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+  will-change: transform;
+  width: 300vw;
+}
+
+.horizontal-section {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.section-content {
+  max-width: 1280px;
+  width: 100%;
+}
