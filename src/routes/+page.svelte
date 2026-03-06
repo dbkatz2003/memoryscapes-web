@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { base } from '$app/paths';
   
   let scrollY = $state(0);
   let email = $state('');
@@ -117,7 +118,7 @@
 <nav class="fixed top-2 left-0 right-0 z-40 backdrop-blur-sm" style="background-color: rgba(10, 10, 10, 0.8);">
   <div class="max-w-7xl mx-auto px-6 py-4">
     <img 
-      src="/memoryscapes_title.png" 
+      src="{base}/memoryscapes_title.png" 
       alt="memoryscapes" 
       class="h-12 md:h-16"
     />
@@ -129,7 +130,7 @@
   <div class="max-w-5xl text-center">
     <h1 class="text-6xl md:text-7xl lg:text-8xl font-light mb-12 leading-tight" style="color: var(--color-memory-blue)">
       <img 
-        src="/memoryscapes_title.png" 
+        src="{base}/memoryscapes_title.png" 
         alt="memoryscapes" 
         class="inline-block h-16 md:h-20 lg:h-24 align-middle mx-2 opacity-0 animate-scale-in"
         style="animation-delay: 0.3s;"
